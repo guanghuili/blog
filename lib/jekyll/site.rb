@@ -183,6 +183,7 @@ module Jekyll
       end
 
       pages.sort_by!(&:name)
+      static_files.sort_by!(&:relative_path)
     end
 
     # Read all the files in <source>/<dir>/_posts and create a new Post
@@ -377,7 +378,7 @@ module Jekyll
             "time"         => time,
             "posts"        => posts.sort { |a, b| b <=> a },
             "pages"        => pages,
-            "static_files" => static_files.sort { |a, b| a.relative_path <=> b.relative_path },
+            "static_files" => static_files,
             "html_pages"   => pages.select { |page| page.html? || page.url.end_with?("/") },
             "categories"   => post_attr_hash('categories'),
             "tags"         => post_attr_hash('tags'),
