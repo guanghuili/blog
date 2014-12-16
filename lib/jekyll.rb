@@ -28,6 +28,12 @@ require 'liquid'
 require 'kramdown'
 require 'colorator'
 
+# Conditional optimizations
+begin
+  require 'liquid-c'
+rescue LoadError
+end
+
 SafeYAML::OPTIONS[:suppress_warnings] = true
 Liquid::Template.error_mode = :strict
 
